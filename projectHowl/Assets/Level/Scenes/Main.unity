@@ -782,9 +782,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _fallingSpeedFactor: 0.275
-  fallSpeedLerp: 10
-  _jumpForce: 5
+  _fallingSpeedFactor: 0.5
+  fallSpeedLerp: 1.25
+  _jumpForce: 5.5
   _maxJumps: 2
   remainingJumps: 0
   _maxGroundSpeed: 7
