@@ -73,6 +73,8 @@ public class playerController : MonoBehaviour
             remainingJumps = _maxJumps;
             fallSpeedT = 0f;
         }
+
+        Debug.Log("Holis");
     }
 
     private void OnDrawGizmos()
