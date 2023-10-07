@@ -2,8 +2,8 @@
 A distopic plataformer indie game made in Unity as final project in the International Diploma in Video Game Development and Production of the Military University Nueva Granada.
 
 # Project Owners
-* Laura A. Lopez
-* Juan S. Vera
+* LauraLopezLeon
+* ItsMeZeVas
 * MoriTAH3110
 
 # Specifications
