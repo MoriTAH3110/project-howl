@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class playerController : MonoBehaviour
 {
+    [Header("PLAYER INPUT")]
+    [SerializeField] public PlayerInput playerInput;
+
     [Header("MOVEMENT VARIABLES")]
     [SerializeField] float _speed = 500f;
     [SerializeField] float _fallingSpeedFactor = 0.5f;
@@ -33,6 +36,11 @@ public class playerController : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
+        
     }
 
     void FixedUpdate()
@@ -73,8 +81,6 @@ public class playerController : MonoBehaviour
             remainingJumps = _maxJumps;
             fallSpeedT = 0f;
         }
-
-        Debug.Log("Holis");
     }
 
     private void OnDrawGizmos()
@@ -87,19 +93,21 @@ public class playerController : MonoBehaviour
     }
 
     // Player Input
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        _movement.x = value.Get<float>();
+        _movement.x = ctx.ReadValue<float>();
 
     }
 
-    public void OnJump(InputValue value)
+    public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (isGrounded() || remainingJumps > 0)
-        {
-            _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
-            remainingJumps -= 1;
-            fallSpeedT = 0f;
+        if(ctx.started){
+            if (isGrounded() || remainingJumps > 0)
+            {
+                _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
+                remainingJumps -= 1;
+                fallSpeedT = 0f;
+            }
         }
     }
 

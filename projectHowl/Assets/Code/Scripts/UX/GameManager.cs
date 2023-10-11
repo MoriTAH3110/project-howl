@@ -1,52 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private bool isPaused;
+
+    public PlayerInput playerInput;
+
+    [SceneNameDropDown]
+    public string mainMenuScene;
+
     public static GameManager instance;
 
-    public GameObject panelPausa;
+    public GameObject panelPause;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        isPaused = false;    
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPause(InputAction.CallbackContext ctx)
     {
-        
-    }
-    private void OnPause()
-    {
-        PausarJuego();
+        if(ctx.started) {
+            isPaused = !isPaused;
+            if(isPaused){
+                ResumeGame();
+            } else {
+                PauseGame();
+            }
+        }
     }
 
-    public void PausarJuego()
-    {
-        Time.timeScale = 0;
-        panelPausa.SetActive(true); 
+    public void PauseGame() {
+        playerInput.SwitchCurrentActionMap("UI");
+        panelPause.SetActive(true);
+        Time.timeScale = 0f;
     }
-    public void DespausarJuego()
-    {
-        Time.timeScale = 1;
-        panelPausa.SetActive(false);
+
+    public void ResumeGame(){
+        playerInput.SwitchCurrentActionMap("Gameplay");
+        panelPause.SetActive(false);
+        Time.timeScale = 1f;
     }
-    public void VolverMainMenu()
+
+    public void LoadMainMenu()
     {
-        SceneManager.LoadScene("Main_Menu");
+        SceneManager.LoadScene(mainMenuScene);
     }
-    public void CargarEscena(string EscenaCargar)
+
+    public void LoadCustomScene(string EscenaCargar)
     {
         SceneManager.LoadScene(EscenaCargar);
-    }
-    public void SalirJuego()
-    {
-        Application.Quit();
     }
 }
