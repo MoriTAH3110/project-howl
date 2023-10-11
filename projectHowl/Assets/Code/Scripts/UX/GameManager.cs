@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main_Menu");
     }
-    public void CargarEscena()
+    public void CargarEscena(string EscenaCargar)
     {
-
+        SceneManager.LoadScene(EscenaCargar);
     }
     public void SalirJuego()
     {
