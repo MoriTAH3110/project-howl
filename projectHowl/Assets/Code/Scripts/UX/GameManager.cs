@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        isPaused = false;    
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void OnPause(InputAction.CallbackContext ctx)
