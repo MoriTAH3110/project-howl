@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
         isPaused = false;
     }
 
-
     public void OnPause(InputAction.CallbackContext ctx)
     {
         if(ctx.started) {
