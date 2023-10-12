@@ -8,7 +8,7 @@ public class MainMenuManager : MonoBehaviour
     [SceneNameDropDown]
     public string playButtonScene;
 
-   public void OnPlayBtnClick() {
+    public void OnPlayBtnClick() {
     SceneManager.LoadScene(playButtonScene);
    }
 
