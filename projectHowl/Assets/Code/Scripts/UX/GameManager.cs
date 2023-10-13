@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject panelPause;
-    bool canvasTimePausa;
 
     void Start()
     {
@@ -28,24 +27,23 @@ public class GameManager : MonoBehaviour
             isPaused = !isPaused;
             if(isPaused){
                 ResumeGame();
-                canvasTimePausa = false;
             } else {
                 PauseGame();
-                canvasTimePausa = true;
             }
         }
     }
 
     public void PauseGame() {
-        playerInput.SwitchCurrentActionMap("UI");
         panelPause.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+        playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void ResumeGame(){
         playerInput.SwitchCurrentActionMap("Gameplay");
         panelPause.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        
     }
 
     public void LoadMainMenu()
