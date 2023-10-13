@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject panelPause;
+    bool canvasTimePausa;
 
     void Start()
     {
@@ -21,15 +22,16 @@ public class GameManager : MonoBehaviour
         isPaused = false;
     }
 
-
     public void OnPause(InputAction.CallbackContext ctx)
     {
         if(ctx.started) {
             isPaused = !isPaused;
             if(isPaused){
                 ResumeGame();
+                canvasTimePausa = false;
             } else {
                 PauseGame();
+                canvasTimePausa = true;
             }
         }
     }

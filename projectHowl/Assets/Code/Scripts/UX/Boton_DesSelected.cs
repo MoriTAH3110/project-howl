@@ -10,7 +10,9 @@ public class Boton_DesSelected : MonoBehaviour, IPointerExitHandler// required i
     public void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("The cursor exited the selectable UI element.");
-        animator.SetBool("mantener", false);
-        animator.SetBool("aparecer", false);
+        animator.SetBool("presionado", false);
+        //animator.SetBool("mantener", true);
+        //animator.SetBool("aparecer", false);
+        Debug.Log("2");
     }
 }

@@ -9,8 +9,8 @@ public class Boton_Selected : MonoBehaviour, IPointerEnterHandler// required int
     //Do this when the cursor enters the rect area of this selectable UI object.
     public void OnPointerEnter(PointerEventData eventData)
     {
-        animator.SetBool("aparecer", true);
-        animator.SetBool("mantener", true);
-        //Debug.Log("1");
+        animator.SetBool("presionado", true);
+        //animator.SetBool("mantener", true);
+        Debug.Log("1");
     }
 }
