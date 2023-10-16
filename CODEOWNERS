@@ -1,0 +1,5 @@
+# Set the default owner (e.g., repository owner)
+* @MoriTAH3110
+
+# Allow specific collaborators to merge into main
+/projectHowl/* @ItsMeZeVas @LauraLopezLeon
