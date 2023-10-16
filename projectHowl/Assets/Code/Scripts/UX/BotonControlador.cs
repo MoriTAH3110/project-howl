@@ -9,7 +9,7 @@ public class BotonControlador : MonoBehaviour
 
     private void Start()
     {
-        // Asigna el método ResetearBoton al evento de clic del botón
+        // Asigna el mï¿½todo ResetearBoton al evento de clic del botï¿½n
         boton.onClick.AddListener(ResetearBoton);
     }
 
@@ -17,6 +17,7 @@ public class BotonControlador : MonoBehaviour
     {
         Engranaje1.transform.localScale = new Vector3(0, 0, 0);
         Engranaje2.transform.localScale = new Vector3(0, 0, 0);
-        // Puedes agregar más acciones según tus necesidades
+        // Puedes agregar mï¿½s acciones segï¿½n tus necesidades
+        Debug.Log("Resetting");
     }
 }

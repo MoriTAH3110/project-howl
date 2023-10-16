@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;// Required when using Event data.
 
 public class Boton_DesSelected : MonoBehaviour, IPointerExitHandler// required interface when using the OnPointerExit method.
@@ -13,6 +11,5 @@ public class Boton_DesSelected : MonoBehaviour, IPointerExitHandler// required i
         animator.SetBool("presionado", false);
         //animator.SetBool("mantener", true);
         //animator.SetBool("aparecer", false);
-        Debug.Log("2");
     }
 }

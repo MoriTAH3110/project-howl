@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;// Required when using Event data.
 
 public class Boton_Selected : MonoBehaviour, IPointerEnterHandler// required interface when using the OnPointerEnter method.
@@ -11,6 +9,5 @@ public class Boton_Selected : MonoBehaviour, IPointerEnterHandler// required int
     {
         animator.SetBool("presionado", true);
         //animator.SetBool("mantener", true);
-        Debug.Log("1");
     }
 }
