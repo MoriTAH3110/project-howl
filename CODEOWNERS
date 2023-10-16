@@ -2,5 +2,4 @@
 * @MoriTAH3110
 
 # Allow specific collaborators to merge into main
-/docs/* @ItsMeZeVas @LauraLopezLeon
-/src/* @ItsMeZeVas @LauraLopezLeon
+/projectHowl/* @ItsMeZeVas @LauraLopezLeon
