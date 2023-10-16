@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject panelPause;
+    public Button resumeGameBtn;
 
     void Start()
     {
@@ -35,14 +37,14 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame() {
         panelPause.SetActive(true);
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void ResumeGame(){
         playerInput.SwitchCurrentActionMap("Gameplay");
         panelPause.SetActive(false);
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         
     }
 
