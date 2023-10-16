@@ -16,7 +16,12 @@ public class GamepadUIInput : MonoBehaviour
             lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         }
 
+        //Mouse input detected
         if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
+            //Enable mouse when moved
+            ToggleMouseInput(true);
+
+            //Set selected to mouse position
             PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
             pointerEventData.position = Input.mousePosition;
             EventSystem.current.SetSelectedGameObject(pointerEventData.pointerCurrentRaycast.gameObject);
@@ -40,11 +45,19 @@ public class GamepadUIInput : MonoBehaviour
     private void OnNavigateStarted(InputAction.CallbackContext context)
     {
         EventSystem.current.SetSelectedGameObject(lastSelected.gameObject);
+
+        //Disable mouse when gamepad input is started
+        ToggleMouseInput(false);
     }
 
     private void OnNavigateCanceled(InputAction.CallbackContext context)
     {
         lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+    }
+
+    private void ToggleMouseInput (bool isMouseEnabled) {
+        Cursor.visible = isMouseEnabled;
+        Cursor.lockState = isMouseEnabled ? CursorLockMode.None : CursorLockMode.Locked;
     }
     
 }
