@@ -8,7 +8,7 @@ public class Puzzle_1 : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 {
     private RectTransform _rectTransform;
     private Image _image;
-
+    private Vector3 movimiento;
     public void OnBeginDrag(PointerEventData eventData)
     {
         _image.color = new Color32(255,255,255,170);
@@ -17,7 +17,8 @@ public class Puzzle_1 : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         //_rectTransform.anchoredPosition += eventData.delta;
-        transform.position = Input.mousePosition;
+        movimiento = new Vector3(Input.mousePosition.x, transform.position.y ,0f);
+        transform.position = movimiento;
     }
 
     public void OnEndDrag(PointerEventData eventData)
