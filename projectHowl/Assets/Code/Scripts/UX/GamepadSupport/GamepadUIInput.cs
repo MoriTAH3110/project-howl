@@ -20,7 +20,7 @@ public class GamepadUIInput : MonoBehaviour
         }
 
         //Mouse input detected
-        if((Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) & playerInput.currentActionMap.name == "UI") {
+        if((Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)) {
             //Enable mouse when moved
             ToggleMouseInput(true);
 

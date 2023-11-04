@@ -46,6 +46,7 @@ public class Puzzle1_Gamepad : MonoBehaviour
 
     private void OnEnable()
     {
+        playerInputAsset.Enable();
         playerInput.SwitchCurrentActionMap("UI");
 
         _analogNavAction = playerInputAsset.FindAction("AnalogNavigate");
@@ -98,6 +99,11 @@ public class Puzzle1_Gamepad : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _puzzleCanvas.SetActive(false);
+    }
+
+    
+    public void SetPiecePosition() {
+        _puzzlePiece.GetComponent<RectTransform>().anchoredPosition = new Vector2 (slider.value, _puzzlePiece.GetComponent<RectTransform>().anchoredPosition.y);
     }
     
 }
