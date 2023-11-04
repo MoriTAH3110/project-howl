@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class GamepadUIInput : MonoBehaviour
 {
     public InputAction playerUIInput;
+    public PlayerInput playerInput;
 
     [SerializeField]
-    public Button lastSelected;
+    public GameObject lastSelected;
+
+    public Canvas[] sceneCanvas;
 
     private void Update()
     {
         if(EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null) {
-            lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            lastSelected = EventSystem.current.currentSelectedGameObject;
         }
 
         //Mouse input detected
-        if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
+        if((Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) & playerInput.currentActionMap.name == "UI") {
             //Enable mouse when moved
             ToggleMouseInput(true);
 
@@ -30,21 +33,23 @@ public class GamepadUIInput : MonoBehaviour
 
     private void OnEnable()
     {
-        playerUIInput.Enable();
         playerUIInput.started += OnNavigateStarted;
         playerUIInput.canceled += OnNavigateCanceled;
+        playerUIInput.Enable();
     }
 
     private void OnDisable()
     {
-        playerUIInput.Disable();
         playerUIInput.started -= OnNavigateStarted;
         playerUIInput.canceled -= OnNavigateCanceled;
+        playerUIInput.Disable();
     }
 
     private void OnNavigateStarted(InputAction.CallbackContext context)
     {
-        EventSystem.current.SetSelectedGameObject(lastSelected.gameObject);
+        if(playerInput.currentControlScheme == "UI") {
+            EventSystem.current.SetSelectedGameObject(lastSelected.gameObject);
+        }
 
         //Disable mouse when gamepad input is started
         ToggleMouseInput(false);
@@ -52,7 +57,7 @@ public class GamepadUIInput : MonoBehaviour
 
     private void OnNavigateCanceled(InputAction.CallbackContext context)
     {
-        lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        lastSelected = EventSystem.current.currentSelectedGameObject;
     }
 
     private void ToggleMouseInput (bool isMouseEnabled) {

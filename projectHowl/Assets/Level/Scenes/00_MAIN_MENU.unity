@@ -291,18 +291,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3127571}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3127573 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6094779933840138591, guid: c4759b020eb264e4782d8d0745074412,
-    type: 3}
-  m_PrefabInstance: {fileID: 3127571}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3127572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &143768694 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7148530728659957835, guid: c4759b020eb264e4782d8d0745074412,
@@ -514,8 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3443dea202b1ca14a8cad590545494ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 3127573}
-  eventSystem: {fileID: 723013820}
+  firstSelected: {fileID: 3127572}
 --- !u!1 &502474165
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +870,7 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
   lastSelected: {fileID: 0}
+  sceneCanvas: []
 --- !u!114 &723013824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,7 +1573,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

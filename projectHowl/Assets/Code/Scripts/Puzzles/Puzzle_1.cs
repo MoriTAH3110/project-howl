@@ -34,10 +34,7 @@ public class Puzzle_1 : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
             Debug.Log("Bien hecho perra");
         }
     }
-    void Start()
-    {
 
-    }
     public void OnDrag(PointerEventData eventData)
     {
         if (_scroll.value > 0 && _scroll.value < 1)
@@ -45,5 +42,9 @@ public class Puzzle_1 : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
             movimiento_pieza = new Vector3(Input.mousePosition.x, _pieza_rompecabezas.transform.position.y, 0f);
             _pieza_rompecabezas.transform.position = movimiento_pieza;
         }
+    }
+
+    public void SetPiecePosition() {
+        _pieza_rompecabezas.GetComponent<RectTransform>().anchoredPosition = new Vector2 (_scroll.value, _pieza_rompecabezas.GetComponent<RectTransform>().anchoredPosition.y);
     }
 }
