@@ -291,18 +291,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3127571}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3127573 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6094779933840138591, guid: c4759b020eb264e4782d8d0745074412,
-    type: 3}
-  m_PrefabInstance: {fileID: 3127571}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3127572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &143768694 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7148530728659957835, guid: c4759b020eb264e4782d8d0745074412,
@@ -434,7 +422,7 @@ GameObject:
   - component: {fileID: 337315843}
   - component: {fileID: 337315845}
   - component: {fileID: 337315844}
-  - component: {fileID: 337315846}
+  - component: {fileID: 337315847}
   m_Layer: 5
   m_Name: PANEL_MAIN_MENU
   m_TagString: Untagged
@@ -502,7 +490,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337315842}
   m_CullTransparentMesh: 1
---- !u!114 &337315846
+--- !u!114 &337315847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -511,11 +499,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 337315842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3443dea202b1ca14a8cad590545494ef, type: 3}
+  m_Script: {fileID: 11500000, guid: b1190590630216643aa92bf0c25ec413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 3127573}
+  playerInput: {fileID: 723013824}
+  playerInputAsset: {fileID: -944628639613478452, guid: 5450dfd847d2a1b46bf01b10a6f175be,
+    type: 3}
   eventSystem: {fileID: 723013820}
+  lastSelected: {fileID: 0}
+  defaultSelected: {fileID: 3127572}
 --- !u!1 &502474165
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +582,6 @@ GameObject:
   - component: {fileID: 723013820}
   - component: {fileID: 723013822}
   - component: {fileID: 723013824}
-  - component: {fileID: 723013823}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -669,220 +660,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!114 &723013823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723013818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1190590630216643aa92bf0c25ec413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerUIInput:
-    m_Name: Player UI Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: a4ed6dff-07e2-4fc2-9115-5d4565eccce2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: Keyboard
-      m_Id: 7e3f98e4-83f7-4f4e-8aa2-47fad1192f31
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player UI Input
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 00da14ef-35ef-4c1d-9aea-4dc5952ae911
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: up
-      m_Id: 83b0023c-71dc-49ce-b778-1168e2d46080
-      m_Path: <Keyboard>/upArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 7444bdc4-4ed4-4cba-8549-968a6c930501
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: b8a17de6-920e-4f2f-b279-1dbaa6e7fd0b
-      m_Path: <Keyboard>/downArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 32855273-a593-4d81-9806-78f52ac9a2e2
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 18386802-9bf5-480a-948f-77220d027c1e
-      m_Path: <Keyboard>/leftArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 7de50688-074f-4dd3-b91f-0bb7a14fa329
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 334e79c0-5053-4f4b-8d25-7d73f7df00c8
-      m_Path: <Keyboard>/rightArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Keyboard&Mouse
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: Joystick
-      m_Id: 5d95f1f0-4e33-4ab9-9ec0-fa46b7f7ec1b
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player UI Input
-      m_Flags: 4
-    - m_Name: up
-      m_Id: c05ee405-90f6-4209-b790-674da905c0a8
-      m_Path: <Joystick>/stick/up
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Joystick
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: eb6614cc-dc8e-414a-962f-178dbe88cb8a
-      m_Path: <Joystick>/stick/down
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Joystick
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: fff54f9d-87b8-4101-9ffc-f31ba51e06ae
-      m_Path: <Joystick>/stick/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Joystick
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 986c9244-c3c4-48e4-a908-23c4a2d5703d
-      m_Path: <Joystick>/stick/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: Joystick
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: 
-      m_Id: cee7630e-4e30-432f-9144-7f38f3769252
-      m_Path: <Gamepad>/dpad
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 0
-    - m_Name: Gamepad
-      m_Id: 289dc68e-e30d-4952-8f7d-6b309c1fef56
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player UI Input
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 2acfb080-59c7-47b1-a9bd-ff784553ac7f
-      m_Path: <Gamepad>/leftStick/up
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: up
-      m_Id: c74709a6-f877-4950-92df-09ce514d12d2
-      m_Path: <Gamepad>/rightStick/up
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 5d3b87a1-1119-4adf-a0ff-453b1868e2fb
-      m_Path: <Gamepad>/leftStick/down
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 9847ef79-621b-4856-acb8-79e349353e3e
-      m_Path: <Gamepad>/rightStick/down
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 84ad6fbe-6f86-4b2b-acad-1da728dc0af7
-      m_Path: <Gamepad>/leftStick/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 002c7a21-4190-4055-9f36-961267d9ba6d
-      m_Path: <Gamepad>/rightStick/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 4802c3b8-a858-4a61-bff5-067eafd18ea8
-      m_Path: <Gamepad>/leftStick/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 18a068b9-21cb-447a-b576-b9c376a649b1
-      m_Path: <Gamepad>/rightStick/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: ;Gamepad
-      m_Action: Player UI Input
-      m_Flags: 8
-    m_Flags: 0
-  lastSelected: {fileID: 0}
 --- !u!114 &723013824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +690,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 823956073}
 --- !u!1001 &763299803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1585,7 +1362,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

@@ -1,63 +1,60 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class GamepadUIInput : MonoBehaviour
 {
-    public InputAction playerUIInput;
+    [Header("PLAYER INPUT")]
+    public PlayerInput playerInput;
+    public InputActionAsset playerInputAsset;
+    public EventSystem eventSystem;
+    private InputAction _navigate;
 
-    [SerializeField]
-    public Button lastSelected;
+    [Header("GUI")]
+    public GameObject lastSelected;
+
+    public GameObject defaultSelected;
 
     private void Update()
     {
-        if(EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null) {
-            lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-        }
-
-        //Mouse input detected
-        if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
-            //Enable mouse when moved
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
+            eventSystem.SetSelectedGameObject(null);
             ToggleMouseInput(true);
-
-            //Set selected to mouse position
-            PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-            pointerEventData.position = Input.mousePosition;
-            EventSystem.current.SetSelectedGameObject(pointerEventData.pointerCurrentRaycast.gameObject);
         }
     }
 
     private void OnEnable()
     {
-        playerUIInput.Enable();
-        playerUIInput.started += OnNavigateStarted;
-        playerUIInput.canceled += OnNavigateCanceled;
+        lastSelected = defaultSelected;
+
+        playerInputAsset.Enable();
+        playerInput.SwitchCurrentActionMap("UI");
+
+        _navigate = playerInputAsset.FindAction("Navigate");
+        _navigate.performed += OnUiNavigate;
+        _navigate.started += OnUiNavigateStarted;
     }
 
     private void OnDisable()
     {
-        playerUIInput.Disable();
-        playerUIInput.started -= OnNavigateStarted;
-        playerUIInput.canceled -= OnNavigateCanceled;
+        _navigate.performed -= OnUiNavigate;
+        _navigate.started -= OnUiNavigateStarted;
     }
 
-    private void OnNavigateStarted(InputAction.CallbackContext context)
+    private void OnUiNavigateStarted(InputAction.CallbackContext context)
     {
-        EventSystem.current.SetSelectedGameObject(lastSelected.gameObject);
+        eventSystem.SetSelectedGameObject(lastSelected ?? defaultSelected);
+    }
 
-        //Disable mouse when gamepad input is started
+    private void OnUiNavigate(InputAction.CallbackContext context)
+    {
         ToggleMouseInput(false);
-    }
-
-    private void OnNavigateCanceled(InputAction.CallbackContext context)
-    {
-        lastSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        lastSelected = eventSystem.currentSelectedGameObject ?? defaultSelected;
     }
 
     private void ToggleMouseInput (bool isMouseEnabled) {
         Cursor.visible = isMouseEnabled;
         Cursor.lockState = isMouseEnabled ? CursorLockMode.None : CursorLockMode.Locked;
     }
-    
 }
