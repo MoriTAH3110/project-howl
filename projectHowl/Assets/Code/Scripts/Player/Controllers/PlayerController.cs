@@ -112,6 +112,6 @@ public class playerController : MonoBehaviour
     }
 
     // Collisions
-    bool isGrounded() => onGround | onLeftWall | onRightWall;
+    public bool isGrounded() => onGround | onLeftWall | onRightWall;
 
 }
