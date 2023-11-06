@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class Puzzle_2 : MonoBehaviour
 {
     [SerializeField] public Slider _scroll_1;
+    [SerializeField] public Slider _scroll_2;
+    [SerializeField] public Slider _scroll_3;
+
+    private Slider _scroll_seleccionado;
+    private float mov_slider_velocidad = 0.0005f;
 
     private float sliderValue;
     private bool subiendo = true;
@@ -14,35 +19,56 @@ public class Puzzle_2 : MonoBehaviour
     private void Start()
     {
         _scroll_1.value = 0;
+        _scroll_2.value = 0;
+        _scroll_3.value = 0;
+        _scroll_seleccionado = _scroll_1;
     }
     private void Update()
     {
-        sliderValue = _scroll_1.value;
+        sliderValue = _scroll_seleccionado.value;
 
         ContinuacionValidacionSlider();
         if (!pararSlicer)
         {
             ValidacionSlider();
         }
-        
-        _scroll_1.value = sliderValue;
+
+        _scroll_seleccionado.value = sliderValue;
     }
     private void ContinuacionValidacionSlider() 
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (sliderValue < 0.7f && sliderValue > 0.4))
+        if (Input.GetKeyDown(KeyCode.Space) && (sliderValue < 0.7f && sliderValue > 0.4f))
         {
-            pararSlicer = true;
+            if (_scroll_seleccionado == _scroll_1)
+            {
+                _scroll_seleccionado = _scroll_2;
+                mov_slider_velocidad = 0.002f;
+            }
+            else 
+            {
+                if(_scroll_seleccionado == _scroll_2)
+                {
+                    _scroll_seleccionado = _scroll_3;
+                    mov_slider_velocidad = 0.005f;
+                }else
+                { 
+                    pararSlicer = true; 
+                    //Aqui va lo que pasa después de haberlo logrado
+                }
+                
+            }
+
         }
     }
     private void ValidacionSlider()
     {
-        if (_scroll_1.value < 1 && subiendo)
+        if (_scroll_seleccionado.value < 1 && subiendo)
             SubirSlider();
         else
         {
             subiendo = false;
             BajarSlider();
-            if (_scroll_1.value <= 0)
+            if (_scroll_seleccionado.value <= 0)
             {
                 subiendo = true;
             }
@@ -50,10 +76,10 @@ public class Puzzle_2 : MonoBehaviour
     }
     private void SubirSlider()
     {
-        sliderValue += 0.005f;
+        sliderValue += mov_slider_velocidad;
     }
     private void BajarSlider()
     {
-        sliderValue -= 0.005f;
+        sliderValue -= mov_slider_velocidad;
     }
 }
