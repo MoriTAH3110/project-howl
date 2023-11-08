@@ -11,7 +11,7 @@ public class Puzzle_2 : MonoBehaviour
     [SerializeField] public Slider _scroll_3;
 
     private Slider _scroll_seleccionado;
-    private float mov_slider_velocidad = 0.0005f;
+    private float mov_slider_velocidad = 0.002f;
 
     private float sliderValue;
     private bool subiendo = true;
@@ -37,19 +37,21 @@ public class Puzzle_2 : MonoBehaviour
     }
     private void ContinuacionValidacionSlider() 
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (sliderValue < 0.7f && sliderValue > 0.4f))
+        if (Input.GetKeyDown(KeyCode.Space) && (sliderValue < 0.6f && sliderValue > 0.4f))
         {
             if (_scroll_seleccionado == _scroll_1)
             {
                 _scroll_seleccionado = _scroll_2;
-                mov_slider_velocidad = 0.002f;
+                sliderValue = _scroll_seleccionado.value;
+                mov_slider_velocidad = 0.004f;
             }
             else 
             {
                 if(_scroll_seleccionado == _scroll_2)
                 {
                     _scroll_seleccionado = _scroll_3;
-                    mov_slider_velocidad = 0.005f;
+                    sliderValue = _scroll_seleccionado.value;
+                    mov_slider_velocidad = 0.006f;
                 }else
                 { 
                     pararSlicer = true; 
