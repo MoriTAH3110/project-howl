@@ -38,7 +38,26 @@ public class Puzzle_3 : MonoBehaviour
     }
     void UpdateTextDisplay(int value)
     {
-        textDisplay.text = "Valor actual: " + value;
+        switch (value)
+        {
+            case 0:
+                textDisplay.text = "ROJO";
+                textDisplay.color = new Color(0xB0 / 255.0f, 0x48 / 255.0f, 0x48 / 255.0f, 1.0f); // Establece el color del texto a #B04848;
+                break;
+            case 1:
+                textDisplay.text = "AZUL";
+                textDisplay.color = new Color(0x8A / 255.0f, 0xB9 / 255.0f, 0xDA / 255.0f, 1.0f); // Establece el color del texto a #8AB9DA
+                break;
+            case 2:
+                textDisplay.text = "AMARILLO";
+                textDisplay.color = new Color(0xD9 / 255.0f, 0xC4 / 255.0f, 0x73 / 255.0f, 1.0f); // Establece el color del texto a #D9C473
+                break;
+            case 3:
+                textDisplay.text = "VERDE";
+                textDisplay.color = new Color(0xA1 / 255.0f, 0xD9 / 255.0f, 0x89 / 255.0f, 1.0f); // Establece el color del texto a #A1D989
+                break;
+        }
+        
     }
 
     IEnumerator IluminarBotonSecuencia()
@@ -86,6 +105,7 @@ public class Puzzle_3 : MonoBehaviour
                     else
                     {
                         Debug.Log("Ganó COMPLETAMENTE");
+                        //AQUI VA CUANDO YA SE COMPLETA EL NIVEL COMPLETAMENTE
                     }
 
                     playerTurn = false;
@@ -93,12 +113,10 @@ public class Puzzle_3 : MonoBehaviour
             }
             else
             {
-                // El jugador se equivocó, podrías reiniciar el juego o mostrar un mensaje de error
                 Debug.Log("Perdió");
                 playerTurn = false;
                 sequenceIndex = 0;
                 StartCoroutine(IluminarBotonSecuencia());
-                // Iniciar nuevo juego, por ejemplo
             }
         }
     }
