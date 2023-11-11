@@ -902,7 +902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199393595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711841275}
+        m_TargetAssemblyTypeName: Puzzle_3, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199393595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,7 +1321,7 @@ GameObject:
   - component: {fileID: 354905016}
   - component: {fileID: 354905015}
   m_Layer: 5
-  m_Name: BOTON_4
+  m_Name: BOTON_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,7 +1390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 354905016}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711841275}
+        m_TargetAssemblyTypeName: Puzzle_3, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &354905016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4059,7 +4083,7 @@ GameObject:
   - component: {fileID: 1148188571}
   - component: {fileID: 1148188570}
   m_Layer: 5
-  m_Name: BOTON_2
+  m_Name: BOTON_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4128,7 +4152,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1148188571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711841275}
+        m_TargetAssemblyTypeName: Puzzle_3, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1148188571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6241,8 +6277,8 @@ RectTransform:
   m_Children:
   - {fileID: 1948606702}
   - {fileID: 1148188569}
-  - {fileID: 199393593}
   - {fileID: 354905014}
+  - {fileID: 199393593}
   m_Father: {fileID: 733276485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6265,8 +6301,8 @@ MonoBehaviour:
   buttons:
   - {fileID: 1948606703}
   - {fileID: 1148188570}
-  - {fileID: 199393594}
   - {fileID: 354905015}
+  - {fileID: 199393594}
 --- !u!1 &1762686834
 GameObject:
   m_ObjectHideFlags: 0
@@ -7130,7 +7166,7 @@ GameObject:
   - component: {fileID: 1948606704}
   - component: {fileID: 1948606703}
   m_Layer: 5
-  m_Name: BOTON_1
+  m_Name: BOTON_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7199,7 +7235,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1948606704}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711841275}
+        m_TargetAssemblyTypeName: Puzzle_3, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1948606704
 MonoBehaviour:
   m_ObjectHideFlags: 0
