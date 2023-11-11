@@ -8,6 +8,7 @@ public class Puzzle_3 : MonoBehaviour
 {
     public Button[] buttons; // Botones asignados desde el editor
     public TMP_Text textDisplay;
+    public TMP_Text textTurnos;
 
     private int dificultadSecuencia = 3;
     private int inicioSecuencia = 0;
@@ -20,6 +21,7 @@ public class Puzzle_3 : MonoBehaviour
     {
         sequence = new int[6]; // Inicializar la secuencia con el tamaño adecuado
         playerTurn = false;
+        textTurnos.text = "Observa";
         RellenarSecuenciaDeArray();
         StartCoroutine(IluminarBotonSecuencia());
     }
@@ -67,6 +69,7 @@ public class Puzzle_3 : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f); // Tiempo entre cada botón iluminado
             textDisplay.enabled = true; // Esto mostrará el objeto TMP_Text
+            textTurnos.text = "Observa";
             int buttonIndex = sequence[i];
             UpdateTextDisplay(sequence[i]);
             //Button buttonToHighlight = buttons[buttonIndex];
@@ -82,6 +85,7 @@ public class Puzzle_3 : MonoBehaviour
         }
 
         playerTurn = true;
+        textTurnos.text = "Tu turno";
     }
     public void OnButtonClicked(int buttonIndex)
     {
