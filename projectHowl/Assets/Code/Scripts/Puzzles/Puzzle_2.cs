@@ -1,14 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Puzzle_2 : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] public Slider _scroll_1;
     [SerializeField] public Slider _scroll_2;
     [SerializeField] public Slider _scroll_3;
+    [SerializeField] public GameObject successStamp;
+    [SerializeField] public GameObject puzzle2Ui;
+
+
+    [Header("Gamepad support")]
+    public Puzzle2_Gamepad gamepadInput;
 
     private Slider _scroll_seleccionado;
     private float mov_slider_velocidad = 0.002f;
@@ -37,7 +43,7 @@ public class Puzzle_2 : MonoBehaviour
     }
     private void ContinuacionValidacionSlider() 
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (sliderValue < 0.6f && sliderValue > 0.4f))
+        if ((Input.GetKeyDown(KeyCode.Space) || gamepadInput.isActionPressed) && (sliderValue < 0.6f && sliderValue > 0.4f))
         {
             if (_scroll_seleccionado == _scroll_1)
             {
@@ -55,7 +61,7 @@ public class Puzzle_2 : MonoBehaviour
                 }else
                 { 
                     pararSlicer = true; 
-                    //Aqui va lo que pasa después de haberlo logrado
+                    OnSuccess();
                 }
                 
             }
@@ -83,5 +89,21 @@ public class Puzzle_2 : MonoBehaviour
     private void BajarSlider()
     {
         sliderValue -= mov_slider_velocidad;
+    }
+
+    public void OnSuccess() {
+        StartCoroutine(ShowSuccessStamp());
+
+        //TODO: whatever happens after the user completes de puzzle
+
+
+    }
+
+    private IEnumerator ShowSuccessStamp() {
+        yield return new WaitForSeconds(1.0f);
+        successStamp.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+        puzzle2Ui.SetActive(false);
     }
 }

@@ -940,6 +940,76 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Puzzle2"",
+            ""id"": ""cb11ebdd-b5da-4ffe-9566-81f22577bc96"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1555cbd-192e-44b4-91e9-e38c525c7869"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""a07d1403-1def-4215-905c-105814a4ce3c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aa2b5dab-a943-4003-aef6-15a4ed48a053"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7917169e-d47d-4539-8a61-38da313a1ce9"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17690da9-430c-4727-9606-a174d46d39e7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a2bfe59-a05e-4c87-a06e-898e1722d6b0"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -959,6 +1029,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_AnalogNavigate = m_UI.FindAction("AnalogNavigate", throwIfNotFound: true);
         m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
+        // Puzzle2
+        m_Puzzle2 = asset.FindActionMap("Puzzle2", throwIfNotFound: true);
+        m_Puzzle2_Interact = m_Puzzle2.FindAction("Interact", throwIfNotFound: true);
+        m_Puzzle2_Action = m_Puzzle2.FindAction("Action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1180,6 +1254,60 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Puzzle2
+    private readonly InputActionMap m_Puzzle2;
+    private List<IPuzzle2Actions> m_Puzzle2ActionsCallbackInterfaces = new List<IPuzzle2Actions>();
+    private readonly InputAction m_Puzzle2_Interact;
+    private readonly InputAction m_Puzzle2_Action;
+    public struct Puzzle2Actions
+    {
+        private @PlayerControls m_Wrapper;
+        public Puzzle2Actions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Puzzle2_Interact;
+        public InputAction @Action => m_Wrapper.m_Puzzle2_Action;
+        public InputActionMap Get() { return m_Wrapper.m_Puzzle2; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Puzzle2Actions set) { return set.Get(); }
+        public void AddCallbacks(IPuzzle2Actions instance)
+        {
+            if (instance == null || m_Wrapper.m_Puzzle2ActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Puzzle2ActionsCallbackInterfaces.Add(instance);
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Action.started += instance.OnAction;
+            @Action.performed += instance.OnAction;
+            @Action.canceled += instance.OnAction;
+        }
+
+        private void UnregisterCallbacks(IPuzzle2Actions instance)
+        {
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Action.started -= instance.OnAction;
+            @Action.performed -= instance.OnAction;
+            @Action.canceled -= instance.OnAction;
+        }
+
+        public void RemoveCallbacks(IPuzzle2Actions instance)
+        {
+            if (m_Wrapper.m_Puzzle2ActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPuzzle2Actions instance)
+        {
+            foreach (var item in m_Wrapper.m_Puzzle2ActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Puzzle2ActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public Puzzle2Actions @Puzzle2 => new Puzzle2Actions(this);
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -1196,5 +1324,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSubmit(InputAction.CallbackContext context);
         void OnAnalogNavigate(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IPuzzle2Actions
+    {
+        void OnInteract(InputAction.CallbackContext context);
+        void OnAction(InputAction.CallbackContext context);
     }
 }
