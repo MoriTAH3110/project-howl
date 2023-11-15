@@ -29,6 +29,7 @@ public class GamepadUIInput : MonoBehaviour
         lastSelected = defaultSelected;
 
         playerInputAsset.Enable();
+
         playerInput.SwitchCurrentActionMap("UI");
 
         _navigate = playerInputAsset.FindAction("Navigate");
@@ -40,6 +41,8 @@ public class GamepadUIInput : MonoBehaviour
     {
         _navigate.performed -= OnUiNavigate;
         _navigate.started -= OnUiNavigateStarted;
+
+        playerInput.SwitchCurrentActionMap("Gameplay");
     }
 
     private void OnUiNavigateStarted(InputAction.CallbackContext context)

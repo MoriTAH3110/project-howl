@@ -38,11 +38,9 @@ public class GameManager : MonoBehaviour
     public void PauseGame() {
         panelPause.SetActive(true);
         Time.timeScale = 0f;
-        playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void ResumeGame(){
-        playerInput.SwitchCurrentActionMap("Gameplay");
         panelPause.SetActive(false);
         Time.timeScale = 1f;
         
