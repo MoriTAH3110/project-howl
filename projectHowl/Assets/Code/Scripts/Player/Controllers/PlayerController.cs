@@ -45,27 +45,29 @@ public class playerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.velocity = new Vector3(_realSpeed * _movement.x, _rb.velocity.y, _rb.velocity.z);
+        if(playerInput.currentActionMap.name == "Gameplay") {
+            _rb.velocity = new Vector3(_realSpeed * _movement.x, _rb.velocity.y, _rb.velocity.z);
 
-        //Speed limits 
-        if (Mathf.Abs(_rb.velocity.x) > _maxGroundSpeed)
-        {
-            _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxGroundSpeed);
-        }
+            //Speed limits 
+            if (Mathf.Abs(_rb.velocity.x) > _maxGroundSpeed)
+            {
+                _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxGroundSpeed);
+            }
 
-        if (_rb.velocity.y < 0f)
-        {
-            fallSpeedT += Time.fixedDeltaTime / fallSpeedLerp;
-            _realSpeed = Mathf.Lerp(_speed, _speed * _fallingSpeedFactor, Mathf.Clamp(fallSpeedT, 0f, 1.0f));
-        }
-        else
-        {
-            _realSpeed = _speed;
-        }
+            if (_rb.velocity.y < 0f)
+            {
+                fallSpeedT += Time.fixedDeltaTime / fallSpeedLerp;
+                _realSpeed = Mathf.Lerp(_speed, _speed * _fallingSpeedFactor, Mathf.Clamp(fallSpeedT, 0f, 1.0f));
+            }
+            else
+            {
+                _realSpeed = _speed;
+            }
 
-        if (_rb.velocity.y < -(_maxFallSpeed))
-        {
-            _rb.velocity = new Vector3(_rb.velocity.x, Mathf.Clamp(_rb.velocity.y, -(_maxFallSpeed), 0f), _rb.velocity.z);
+            if (_rb.velocity.y < -(_maxFallSpeed))
+            {
+                _rb.velocity = new Vector3(_rb.velocity.x, Mathf.Clamp(_rb.velocity.y, -(_maxFallSpeed), 0f), _rb.velocity.z);
+            }
         }
     }
 
