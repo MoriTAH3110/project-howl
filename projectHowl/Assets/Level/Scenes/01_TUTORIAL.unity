@@ -6019,7 +6019,7 @@ Transform:
   m_GameObject: {fileID: 1405685094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.131, z: 0}
   m_LocalScale: {x: 0.51, y: 0.51, z: 0.51}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14719,6 +14719,11 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3689607422307013973, guid: 602dfbf9cefa02648be422aac15337e4,
+        type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 1405685097}
     - target: {fileID: 5941847423484840987, guid: 602dfbf9cefa02648be422aac15337e4,
         type: 3}
       propertyPath: m_LocalPosition.x
