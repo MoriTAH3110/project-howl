@@ -29,6 +29,8 @@ public class playerController : MonoBehaviour
     [Header("LAYER MASKS")]
     [SerializeField] LayerMask groundLayer;
 
+    [Header("PARTICLES")]
+    public ParticleSystem _particles;
 
     Vector2 _movement;
     Rigidbody _rb;
@@ -109,6 +111,7 @@ public class playerController : MonoBehaviour
                 _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
                 remainingJumps -= 1;
                 fallSpeedT = 0f;
+                _particles.Play();
             }
         }
     }
