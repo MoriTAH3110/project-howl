@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -24,6 +25,9 @@ public class Puzzle1_Gamepad : MonoBehaviour
     private InputAction _analogNavAction, _interact;
     public float sensitivity;
     private int _joystickInput;
+
+    [Header("Run on success")]
+    public UnityEvent onSuccess;
 
     void Update()
     {
@@ -98,6 +102,8 @@ public class Puzzle1_Gamepad : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _puzzleCanvas.SetActive(false);
+
+        onSuccess.Invoke();
     }
 
     

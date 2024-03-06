@@ -60,4 +60,5 @@ public class GamepadUIInput : MonoBehaviour
         Cursor.visible = isMouseEnabled;
         Cursor.lockState = isMouseEnabled ? CursorLockMode.None : CursorLockMode.Locked;
     }
+
 }
