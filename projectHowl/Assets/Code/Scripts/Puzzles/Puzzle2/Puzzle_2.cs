@@ -97,8 +97,6 @@ public class Puzzle_2 : MonoBehaviour
 
     public void OnSuccess() {
         StartCoroutine(ShowSuccessStamp());
-
-        WhenCompleted.Invoke();
     }
 
     private IEnumerator ShowSuccessStamp() {
@@ -107,5 +105,7 @@ public class Puzzle_2 : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         puzzle2Ui.SetActive(false);
+
+        WhenCompleted.Invoke();
     }
 }
