@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class Puzzle_2 : MonoBehaviour
 
     [Header("Gamepad support")]
     public Puzzle2_Gamepad gamepadInput;
+
+    [Header("On Sucess")]
+    public UnityEvent WhenCompleted;
 
     private Slider _scroll_seleccionado;
     private float mov_slider_velocidad = 0.002f;
@@ -94,9 +98,7 @@ public class Puzzle_2 : MonoBehaviour
     public void OnSuccess() {
         StartCoroutine(ShowSuccessStamp());
 
-        //TODO: whatever happens after the user completes de puzzle
-
-
+        WhenCompleted.Invoke();
     }
 
     private IEnumerator ShowSuccessStamp() {
